@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Labeling</title>
+	<title>Senti</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
@@ -42,7 +42,7 @@
 <div class="container">
 
 	<div class="row col">
-		<h1>Labeling</h1>
+		<h1>Senti</h1>
 	</div>
 
 	<div class="row">
