@@ -82,18 +82,20 @@ var application = new Vue({
             });
         },
         saveStatus: function() {
-            axios.post('../api/save-status', JSON.stringify({
-                ref: 'save',
-                pid: this.polarity,
-                did: this.id
-            })).then(res => {
-                console.log(res.data);
-                this.nextText();
-                this.polarity = null;
-                this.polarity_text = null;
-            }).catch(err => {
-                console.log(err);
-            });
+            if (this.polarity && this.id) {
+                axios.post('../api/save-status', JSON.stringify({
+                    ref: 'save',
+                    pid: this.polarity,
+                    did: this.id
+                })).then(res => {
+                    console.log(res.data);
+                    this.nextText();
+                    this.polarity = null;
+                    this.polarity_text = null;
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
         },
         findText: function(ref) {
             this.shimmer = true;
