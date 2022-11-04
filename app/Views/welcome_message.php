@@ -6,7 +6,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<!-- a grid framework in 250 bytes? are you kidding me?! -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+
 	<link rel="stylesheet" href="css/grid.css">
 
 	<!-- all the important responsive layout stuff -->
@@ -21,14 +24,14 @@
 		}
 
 		@media only screen and (min-width: 54em) {
-			.content { width: 66.66%; }
-			.sidebar { width: 33.33%; }
+			.content { width: 50%; }
+			.sidebar { width: 50%; }
 			.info    { width: 100%;   }
 		}
 
 		@media only screen and (min-width: 76em) {
-			.content { width: 58.33%; } /* 7/12 */
-			.sidebar { width: 41.66%; } /* 5/12 */
+			.content { width: 50%; } /* 7/12 */
+			.sidebar { width: 50%; } /* 5/12 */
 			.info    { width: 50%;    }
 		}
 
@@ -90,9 +93,6 @@
 		.the-options span {
 			font-size: 1rem;
 		}
-		.save {
-			cursor: pointer;
-		}
 		.polarity {
 			background-color: #00005c;
 			color: white;
@@ -101,6 +101,26 @@
 			width: 110px;
 			text-align: center;
 			font-weight: 600;
+		}
+		.btnx {
+			background-color: #d6d6e5;
+			cursor: pointer;
+			box-shadow: 2px 2px blue;
+		}
+		.refresh {
+			width: 40px;
+			box-shadow: 2px 2px #41b900 !important;
+		}
+		.save {
+			width: 40px;
+			box-shadow: 2px 2px #dd8615 !important;
+		}
+		.save img {
+			font-size: 1rem;
+		}
+		.text-status img {
+			width: 1.5rem;
+    		vertical-align: middle;
 		}
 	</style>
 
@@ -113,7 +133,7 @@
 <div id="app" class="container">
 
 	<div class="row col">
-		<a href="<?= base_url('/'); ?>">
+		<a href="<?= base_url('/'); ?>" style="display: inline-flex;">
 			<h1><img src="<?php echo base_url('images/emotions-32.png'); ?>" alt=""></h1>
 		</a>
 	</div>
@@ -123,36 +143,37 @@
 			<!-- <h2>A Labeling - Sentiment Analysis Tool</h2> -->
 			<!-- <p class="desc">By <a href="https://techack.id/">tecHack</a> and <a href="http://github.com/">check it out on GitHub</a>!</p> -->
 
-			<p class="intro">Labeling dataset with polarities: Positive, Neutral, Negative, Irrelevant.</p>
+			<!-- <p class="intro">Labeling dataset with polarities: <b>Positive</b>, <b>Neutral</b>, <b>Negative</b>, <b>Irrelevant</b>.</p> -->
 
-			<h3>TexID - <input class="text-id" type="text" :value="id"></h3>
+			<h3>TexID - <input v-model="id" v-on:change="findText" class="text-id" type="text" :value="id"> &nbsp; <span v-if="text_status" class="text-status"><img src="<?= base_url('images/checked.svg'); ?>" alt=""></span></h3>
 			<br>
-			<p class="the-text">{{ next_text }}</p> - <span class="polarity">{{ polarity }}</span>
+			<p class="the-text">{{ next_text }}</p> - <span v-model="polarity" class="polarity">{{ polarity_text }}</span>
 			<br>
 			<br>
 			<div class="the-options">
 				<label>
-					<input v-model="polarity" type="radio" name="radio" value="positive" checked/>
+					<input v-model="polarity_text" type="radio" value="positive"/>
 					<span>Positive</span>
 				</label>
 				<label>
-					<input v-model="polarity" type="radio" name="radio" value="neutral"/>
+					<input v-model="polarity_text" type="radio" value="neutral"/>
 					<span>Neutral</span>
 				</label>
 				<label>
-					<input v-model="polarity" type="radio" name="radio" value="negative"/>
+					<input v-model="polarity_text" type="radio" value="negative"/>
 					<span>Negative</span>
 				</label>
 				<label>
-					<input v-model="polarity" type="radio" name="radio" value="irrelevant"/>
+					<input v-model="polarity_text" type="radio" value="irrelevant"/>
 					<span>Irrelevant</span>
 				</label>
 			</div>
 			<br>
 			<div>
-				<button class="save"><-</button>
-				<button class="save">-></button>
-				<button class="save">Save</button>
+				<button class="btnx prev" v-on:click="findText('prev')">&#8672;</button>
+				<button class="btnx next" v-on:click="findText('next')">&#8674;</button>
+				<button class="btnx refresh" v-on:click="nextText"><img src="<?= base_url('images/refresh.svg'); ?>" alt=""></button>&nbsp;&nbsp;
+				<button class="btnx save" v-on:click="saveStatus"><img src="<?= base_url('images/save.svg'); ?>" alt=""></button>
 			</div>
 
 			<br>
@@ -163,16 +184,17 @@
 
 			<!-- <h2>Info</h2>
 			<p>Labeling dataset with polarities: Positive, Neutral, Negative, Irrelevant.</p> -->
+			<p class="intro">Labeling dataset with polarities: <b>Positive</b>, <b>Neutral</b>, <b>Negative</b>, <b>Irrelevant</b>.</p>
 
 			<div class="row">
 				<div class="col feature">
-					<h4>Project</h4>
+					<h4><img src="<?= base_url('images/project.svg'); ?>" alt=""></h4>
 					<p>BBM, Pertalite, Pertamax</p>
 				</div>
 
 				<div class="col feature">
-					<h4>Progress</h4>
-					<p>100/100000</p>
+					<h4><img src="<?= base_url('images/graph.svg'); ?>" alt=""></h4>
+					<p>{{ done }}/{{ total }} (Rp. {{ done * 20 }})</p>
 				</div>
 			</div>
 
