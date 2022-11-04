@@ -24,6 +24,9 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Database
+database.sql
+
 # Windows shortcuts
 *.lnk
 

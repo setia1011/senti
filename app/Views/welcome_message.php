@@ -97,6 +97,11 @@
 			background-color: #00005c;
 			color: white;
 		}
+		.text-id {
+			width: 110px;
+			text-align: center;
+			font-weight: 600;
+		}
 	</style>
 
 	<!-- general boring stuff and some visual tweaks -->
@@ -116,11 +121,11 @@
 	<div class="row">
 		<div class="col content">
 			<!-- <h2>A Labeling - Sentiment Analysis Tool</h2> -->
-			<p class="desc">By <a href="https://techack.id/">TecHack</a> and <a href="http://github.com/">check it out on GitHub</a>!</p>
+			<!-- <p class="desc">By <a href="https://techack.id/">tecHack</a> and <a href="http://github.com/">check it out on GitHub</a>!</p> -->
 
-			<p class="intro">This Labeling is created to make labeling dataset for Sentiment Analysis easier, work on it from anywhere and anytime.</p>
+			<p class="intro">Labeling dataset with polarities: Positive, Neutral, Negative, Irrelevant.</p>
 
-			<h3>Text - <b>{{ id }}</b></h3>
+			<h3>TexID - <input class="text-id" type="text" :value="id"></h3>
 			<br>
 			<p class="the-text">{{ next_text }}</p> - <span class="polarity">{{ polarity }}</span>
 			<br>
@@ -145,6 +150,8 @@
 			</div>
 			<br>
 			<div>
+				<button class="save"><-</button>
+				<button class="save">-></button>
 				<button class="save">Save</button>
 			</div>
 
@@ -154,13 +161,13 @@
 
 		<div class="col sidebar">
 
-			<h2>Info</h2>
-			<p>Labeling dataset with polarities: Positive, Neutral, Negative, Irrelevant.</p>
+			<!-- <h2>Info</h2>
+			<p>Labeling dataset with polarities: Positive, Neutral, Negative, Irrelevant.</p> -->
 
 			<div class="row">
 				<div class="col feature">
 					<h4>Project</h4>
-					<p>Labeling dataset Twitter</p>
+					<p>BBM, Pertalite, Pertamax</p>
 				</div>
 
 				<div class="col feature">
@@ -170,8 +177,9 @@
 			</div>
 
 			<p class="social">
-				<iframe src="http://ghbtns.com/github-btn.html?user=mourner&amp;repo=dead-simple-grid&amp;type=watch&amp;count=true" width="84" height="20"></iframe>
-  				<iframe src="http://ghbtns.com/github-btn.html?user=mourner&amp;repo=dead-simple-grid&amp;type=fork&amp;count=true" width="84" height="20"></iframe>
+				<p class="desc">By <a href="https://techack.id/">tecHack</a> and <a href="http://github.com/">check it out on GitHub</a>!</p>
+				<!-- <iframe src="http://ghbtns.com/github-btn.html?user=mourner&amp;repo=dead-simple-grid&amp;type=watch&amp;count=true" width="84" height="20"></iframe>
+  				<iframe src="http://ghbtns.com/github-btn.html?user=mourner&amp;repo=dead-simple-grid&amp;type=fork&amp;count=true" width="84" height="20"></iframe> -->
   			</p>
 		</div>
 	</div>
