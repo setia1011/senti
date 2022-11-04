@@ -103,16 +103,17 @@
 			font-weight: 600;
 		}
 		.btnx {
+			width: 40px;
 			background-color: #d6d6e5;
 			cursor: pointer;
 			box-shadow: 2px 2px blue;
+			border-radius: 2px 2px 2px 2px;
+			border: 1px solid darkcyan;
 		}
 		.refresh {
-			width: 40px;
 			box-shadow: 2px 2px #41b900 !important;
 		}
 		.save {
-			width: 40px;
 			box-shadow: 2px 2px #dd8615 !important;
 		}
 		.save img {
@@ -170,8 +171,8 @@
 			</div>
 			<br>
 			<div>
-				<button class="btnx prev" v-on:click="findText('prev')">&#8672;</button>
-				<button class="btnx next" v-on:click="findText('next')">&#8674;</button>
+				<button class="btnx prev" v-on:click="findText('prev')"><img src="<?= base_url('images/prev.svg'); ?>" alt=""></button>
+				<button class="btnx next" v-on:click="findText('next')"><img src="<?= base_url('images/next.svg'); ?>" alt=""></button>
 				<button class="btnx refresh" v-on:click="nextText"><img src="<?= base_url('images/refresh.svg'); ?>" alt=""></button>&nbsp;&nbsp;
 				<button class="btnx save" v-on:click="saveStatus"><img src="<?= base_url('images/save.svg'); ?>" alt=""></button>
 			</div>
@@ -184,7 +185,7 @@
 
 			<!-- <h2>Info</h2>
 			<p>Labeling dataset with polarities: Positive, Neutral, Negative, Irrelevant.</p> -->
-			<p class="intro">Labeling dataset with polarities: <b>Positive</b>, <b>Neutral</b>, <b>Negative</b>, <b>Irrelevant</b>.</p>
+			<!-- <p class="intro">Labeling dataset with polarities: <b>Positive</b>, <b>Neutral</b>, <b>Negative</b>, <b>Irrelevant</b>.</p> -->
 
 			<div class="row">
 				<div class="col feature">
