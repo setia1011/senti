@@ -11,10 +11,10 @@ a {
 	color: #06f;
 }
 h1 {
-	font-size: 2.2em;
+	font-size: 2.6em;
 }
 h2 {
-	font-size: 1.4em;
+	font-size: 1.6em;
 }
 h2, h3, h4 {
 	margin-top: 0;
@@ -64,7 +64,7 @@ iframe {
 	border-top: 1px dotted #aaa;
 }
 .content {
-	border-bottom: 1px dotted #aaa;
+	/* border-bottom: 1px dotted #aaa; */
 	margin-bottom: 1.5em;
 }
 

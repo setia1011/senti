@@ -4,6 +4,7 @@ var application = new Vue({
         axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     },
     data: {
+        shimmer: false,
         text_status: false,
         next_text: null,
         id: null,
@@ -47,6 +48,7 @@ var application = new Vue({
             if (this.polarity == "4") {this.polarity_text = 'irrelevant';}
         },
         nextText: function() {
+            this.shimmer = true;
             axios.post('../api/next-text', JSON.stringify({
                 ref: 'next'
             })).then(res => {
@@ -57,6 +59,7 @@ var application = new Vue({
                 this.done = res.data[0].done;
                 this.textStatus();
                 this.text_status = false;
+                this.shimmer = false;
             }).catch(err => {
                 console.log(err);
             });
@@ -93,6 +96,7 @@ var application = new Vue({
             });
         },
         findText: function(ref) {
+            this.shimmer = true;
             var idx = this.id;
             if (ref == 'prev') {idx = parseInt(this.id) - 1}
             if (ref == 'next') {idx = parseInt(this.id) + 1}
@@ -106,6 +110,7 @@ var application = new Vue({
                 // console.log(this.polarity);
                 this.textStatus();
                 this.polarity2Text();
+                this.shimmer = false;
             }).catch(err => {
                 console.log(err);
             });
