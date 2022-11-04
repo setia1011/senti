@@ -270,7 +270,7 @@
 			</div> -->
 
 			<p class="social">
-				<p class="desc">By <a href="https://techack.id/">tecHack</a> and <a href="http://github.com/">check it out on GitHub</a>!</p>
+				<p class="desc">By <a href="https://techack.id/">TecHackID</a></p>
 				<!-- <iframe src="http://ghbtns.com/github-btn.html?user=mourner&amp;repo=dead-simple-grid&amp;type=watch&amp;count=true" width="84" height="20"></iframe>
   				<iframe src="http://ghbtns.com/github-btn.html?user=mourner&amp;repo=dead-simple-grid&amp;type=fork&amp;count=true" width="84" height="20"></iframe> -->
   			</p>
