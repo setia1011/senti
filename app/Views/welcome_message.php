@@ -189,11 +189,11 @@
 
 <div id="app" class="container">
 
-	<!-- <div class="row col">
+	<div class="row col">
 		<a href="<?= base_url('/'); ?>" style="display: inline-flex;">
-			<h1><img src="<?php echo base_url('images/emotions-32.png'); ?>" alt=""></h1>
+			<p><img src="<?php echo base_url('images/emotions-32.png'); ?>" alt=""></p>
 		</a>
-	</div> -->
+	</div>
 
 	<div class="row">
 		
