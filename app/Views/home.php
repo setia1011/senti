@@ -217,7 +217,7 @@
 
 			<h3>TexID - <input v-model="id" v-on:change="findText" class="text-id" type="text" :value="id"> &nbsp; <span v-if="text_status" class="text-status"><img src="<?= base_url('images/checked.svg'); ?>" alt=""></span></h3>
 			<br>
-			<div v-show="shimmer" class="col content card-box br">
+			<div v-show="shimmer" class="col card-box br">
 				<div class="wrapper">
 					<div class="Pic animate"></div>
 					<div class="comment br animate w80"></div>
