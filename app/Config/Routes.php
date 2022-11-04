@@ -36,10 +36,13 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/auth', 'Home::auth');
 $routes->post('/api/next-text', 'Api::nextText');
 $routes->post('/api/text-status', 'Api::textStatus');
 $routes->post('/api/save-status', 'Api::saveStatus');
 $routes->post('/api/find-text', 'Api::findText');
+$routes->post('/api/user-auth', 'Api::userAuth');
+$routes->post('/api/user-exit', 'Api::userExit');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

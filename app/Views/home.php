@@ -111,6 +111,18 @@
 			border-radius: 2px 2px 2px 2px;
 			border: 1px solid darkcyan;
 		}
+		.logout {
+			background-color: #ffc6b3;
+			margin-left: 0.5rem;
+			height: 1.5rem;
+			/* box-shadow: 2px 2px red; */
+			cursor: pointer;
+			border-radius: 2px;
+			border: 1px solid gray;
+		}
+		.logout:hover {
+			background-color: #dd8615;
+		}
 		.refresh {
 			box-shadow: 2px 2px #41b900 !important;
 		}
@@ -253,8 +265,12 @@
 
 		<div class="col sidebar">
 
-			<!-- <h2>Info</h2>
-			<p>Labeling dataset with polarities: Positive, Neutral, Negative, Irrelevant.</p> -->
+			<!-- <h6>User-info</h6> -->
+			<h4><img src="<?= base_url('images/graph.svg'); ?>" alt=""></h4>
+			<p>
+				<span><u><?= $userInfo['name']; ?></u></span> <button v-on:click="userExit" class="logout"><img src="<?= base_url('images/logout.svg'); ?>" alt=""></button><br>
+				{{ done }}/{{ total }} (Rp. {{ done * 20 }})
+			</p>
 			<!-- <p class="intro">Labeling dataset with polarities: <b>Positive</b>, <b>Neutral</b>, <b>Negative</b>, <b>Irrelevant</b>.</p> -->
 
 			<!-- <div class="row">
@@ -281,10 +297,7 @@
 </body>
 </html>
 
-<script src="<?= base_url('lib/vue-timepicker/VueTimepicker.umd.js'); ?>"></script>
 <script src="<?= base_url('lib/vue/vue.min.js'); ?>"></script>
-<script src="<?= base_url('lib/vue-select/vue-select.js') ?>"></script>
 <script src="<?= base_url('lib/axios/axios.min.js'); ?>"></script>
 <script src="<?= base_url('lib/lodash/lodash.min.js'); ?>"></script>
-<script src="<?= base_url('lib/vue-pagination/vue-pagination.min.js'); ?>"></script>
 <script src="<?= base_url('js/setia.js'); ?>"></script>

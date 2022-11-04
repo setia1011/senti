@@ -116,6 +116,15 @@ var application = new Vue({
             }).catch(err => {
                 console.log(err);
             });
-        }
+        },
+        userExit: function() {
+            axios.post('../api/user-exit', JSON.stringify({
+                ref: 'exit',
+            })).then(res => {
+                window.location.href = "/";
+            }).catch(err => {
+                console.log(err);
+            });
+        },
     }
 });

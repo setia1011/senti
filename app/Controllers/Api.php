@@ -40,4 +40,19 @@ class Api extends BaseController {
         $textStatus = $model->findText($id);
         return json_encode($textStatus);
     }
+
+    public function userAuth() {
+        $d = json_decode(file_get_contents("php://input"), TRUE);
+        $username = $d['username'];
+        $password = $d['password'];
+        $model = new ApiModel();
+        if ($model->userAuth($username, $password) == 'Berhasil') {
+            return json_encode('Berhasil');
+        }
+    }
+
+    public function userExit() {
+        $session = \Config\Services::session();
+        $session->destroy();
+    }
 }

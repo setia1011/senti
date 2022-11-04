@@ -80,4 +80,22 @@ class ApiModel extends Model {
             return 0;
         }
     }
+
+    public function userAuth($username, $password) {
+        $session = \Config\Services::session();
+        $db = \Config\Database::connect();
+        $res = $db->query("SELECT * FROM user WHERE username = '$username'")->getResultArray();
+        if (count($res) > 0) {
+            if ($res[0]['password'] === $password) {
+                unset($res[0]['password']);
+                $res[0]['credential'] = true;
+                $session->set(['userInfo' => $res[0]]);
+                return 'Berhasil';
+            } else {
+                return "Password does't valid";
+            }
+        } else {
+            return "Username does't not found";
+        }
+    }
 }

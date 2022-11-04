@@ -55,7 +55,7 @@ iframe {
 }
 .social {
 	border-top: 1px dotted #bbb;
-	padding-top: 1.5em;
+	/* padding-top: 1.5em; */
 }
 
 /* minor responsive adjustments */
