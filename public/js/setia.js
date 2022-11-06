@@ -109,7 +109,6 @@ var application = new Vue({
                 this.id = res.data[0].dataset_id;
                 this.next_text = res.data[0].text;
                 this.polarity = res.data[0].polarity;
-                // console.log(this.polarity);
                 this.textStatus();
                 this.polarity2Text();
                 this.shimmer = false;

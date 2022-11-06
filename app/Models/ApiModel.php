@@ -29,20 +29,22 @@ class ApiModel extends Model {
     }
 
     public function saveStatus($did, $pid) {
+        $session = \Config\Services::session();
+        $reviewer = $session->userInfo['id'];
         $db = \Config\Database::connect();
         $cek = $db->query("SELECT * FROM polarity WHERE dataset_id = '$did'")->getResultArray();
         
         if (count($cek) > 0) {
             foreach ($cek as $c) {
                 if ($c['polarity']) {
-                    $q1 = $db->query("UPDATE polarity SET polarity = '$pid' WHERE dataset_id = '$did'");
+                    $q1 = $db->query("UPDATE polarity SET polarity = '$pid', reviewer = '$reviewer' WHERE dataset_id = '$did'");
                     if ($db->affectedRows() > 0) {
                         return 1;
                     }
                 }
             }
         } else {
-            $q2 = $db->query("INSERT INTO polarity (dataset_id, polarity) VALUES ('$did', '$pid')");
+            $q2 = $db->query("INSERT INTO polarity (dataset_id, polarity, reviewer) VALUES ('$did', '$pid', '$reviewer')");
             if ($db->affectedRows() > 0) {
                 return 1;
             }
@@ -84,7 +86,7 @@ class ApiModel extends Model {
     public function userAuth($username, $password) {
         $session = \Config\Services::session();
         $db = \Config\Database::connect();
-        $res = $db->query("SELECT * FROM user WHERE username = '$username'")->getResultArray();
+        $res = $db->query("SELECT * FROM user WHERE username = '$username' AND `status` = 1")->getResultArray();
         if (count($res) > 0) {
             if ($res[0]['password'] === $password) {
                 unset($res[0]['password']);
